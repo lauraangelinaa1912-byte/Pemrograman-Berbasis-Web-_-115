@@ -1,0 +1,281 @@
+/* CSS Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/* Header */
+
+header {
+    position: relative;
+    padding: 45px 20px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #f8a5c2, #f78fb3);
+}
+
+.judul h1 {
+    font-size: 35px;
+}
+
+.judul h2 {
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.judul p {
+    margin-top: 5px;
+}
+
+
+/* Logo */
+
+.logo {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    text-align: center;
+}
+
+.logo img {
+    width: 70px;
+    background-color: white;
+    padding: 4px;
+    border-radius: 7px;
+    box-shadow: 0 2px 6px #aaa;
+    transition: 0.3s;
+}
+
+.logo img:hover {
+    transform: scale(1.08);
+}
+
+.logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 10px;
+}
+
+
+/* Navigasi */
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: white;
+    box-shadow: 0 2px 5px #ddd;
+}
+
+nav a {
+    padding: 12px 16px;
+    color: #e6678f;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: white;
+    background-color: #f78fb3;
+    transform: scale(1.1);
+}
+
+
+/* Isi */
+
+main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+
+/* Card */
+
+.card {
+    padding: 25px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #ead1da;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card:first-child,
+.card:nth-child(6),
+.card:last-child {
+    grid-column: 1 / -1;
+}
+
+.card h2 {
+    color: #e6678f;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f5c6d5;
+    padding-bottom: 7px;
+}
+
+.card h3 {
+    margin: 15px 0 8px;
+}
+
+.card p {
+    margin-bottom: 12px;
+}
+
+.card ul,
+.card ol {
+    padding-left: 25px;
+}
+
+.card li {
+    margin-bottom: 5px;
+}
+
+
+/* Teks */
+
+.tengah {
+    text-align: center;
+}
+
+.kanan {
+    text-align: right;
+}
+
+.highlight {
+    display: inline-block;
+    color: #e6678f;
+    background-color: #fff0f5;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+
+
+/* Tabel */
+
+.tabel {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #e8c4cf;
+    text-align: center;
+}
+
+th {
+    color: white;
+    background: linear-gradient(135deg, #f8a5c2, #f78fb3);
+}
+
+tr {
+    transition: 0.2s;
+}
+
+tr:hover {
+    background-color: #fff0f5;
+}
+
+
+/* Kontak */
+
+.kontak {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.kontak a {
+    padding: 8px 14px;
+    color: white;
+    background-color: #f78fb3;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.kontak a:hover {
+    background-color: #e6678f;
+    transform: scale(1.05);
+}
+
+
+/* Footer */
+
+footer {
+    padding: 25px;
+    text-align: center;
+    color: white;
+    background-color: #f78fb3;
+}
+
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 35px 20px 25px;
+    }
+
+    .judul h1 {
+        font-size: 28px;
+    }
+
+    .logo {
+        position: static;
+        margin-top: 15px;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .card:first-child,
+    .card:nth-child(6),
+    .card:last-child {
+        grid-column: auto;
+    }
+
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav a {
+        padding: 8px;
+    }
+
+    .kontak {
+        flex-direction: column;
+    }
+
+    .kontak a {
+        text-align: center;
+    }
+}
