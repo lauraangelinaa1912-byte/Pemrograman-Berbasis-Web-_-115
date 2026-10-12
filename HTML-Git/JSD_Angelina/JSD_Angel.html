@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 4 - JavaScript</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eaf4ff;
+            color: #26384a;
+            padding: 25px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(50, 120, 200, 0.18);
+        }
+
+        header {
+            background: linear-gradient(135deg, #2874c6, #4a90e2);
+            color: white;
+            padding: 22px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        main {
+            padding: 25px;
+        }
+
+        .card {
+            background: #f5faff;
+            border: 1px solid #b9d8f5;
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            color: #2874c6;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 12px 0 6px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #9bc4e8;
+            border-radius: 8px;
+            font-size: 15px;
+            background: white;
+        }
+
+        input:focus,
+        select:focus {
+            outline: 2px solid #74b9ff;
+            border-color: #2874c6;
+        }
+
+        .pilihan-item {
+            margin: 8px 0;
+        }
+
+        .radio-list label,
+        .checkbox-list label {
+            display: block;
+            font-weight: normal;
+            margin: 9px 0;
+        }
+
+        button {
+            border: none;
+            padding: 11px 18px;
+            border-radius: 8px;
+            background: #4a90e2;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #2874c6;
+            transform: translateY(-2px);
+        }
+
+        .error {
+            color: #d62828;
+            font-size: 14px;
+            margin-top: 7px;
+            font-weight: bold;
+        }
+
+        .hasil {
+            background: #e1f0ff;
+            border-left: 5px solid #4a90e2;
+            padding: 18px;
+            border-radius: 10px;
+            line-height: 1.7;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .info {
+            color: #607080;
+            font-size: 13px;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <img src="anjelina fiks.jpeg" alt="Foto Elisabeth Laura Angelina">
+
+            <div>
+                <h1>Tugas 4 - JavaScript</h1>
+                <p>Nama: Elisabeth Laura Angelina</p>
+                <p>NIM: 255314115</p>
+            </div>
+        </header>
+
+        <main>
+
+            <!-- INPUT NAMA DAN JUMLAH -->
+            <div class="card">
+
+                <h2>1. Data Awal</h2>
+
+                <label for="nama">Nama</label>
+                <input type="text" id="nama" placeholder="Masukkan nama">
+
+                <label for="jumlah">Jumlah Pilihan</label>
+                <input type="number" id="jumlah" min="1" max="10" value="3">
+
+                <p class="info">
+                    Jumlah pilihan 1 sampai 10.
+                </p>
+
+                <p id="errorJumlah" class="error"></p>
+
+                <button type="button" id="btnJumlah">
+                    OK
+                </button>
+
+            </div>
+
+
+            <!-- INPUT TEKS PILIHAN -->
+            <div id="bagianPilihan" class="card hidden">
+
+                <h2>2. Masukkan Teks Pilihan</h2>
+
+                <div id="inputPilihan"></div>
+
+                <p id="errorPilihan" class="error"></p>
+
+                <button type="button" id="btnPilihan">
+                    OK
+                </button>
+
+            </div>
+
+
+            <!-- RADIO, DROPDOWN DAN CHECKBOX -->
+            <div id="bagianPilihanUser" class="card hidden">
+
+                <h2>3. Pilihan Minuman</h2>
+
+                <p><b>Radio Button</b></p>
+
+                <div id="radioPilihan" class="radio-list"></div>
+
+
+                <p style="margin-top: 18px;">
+                    <b>Drop Down</b>
+                </p>
+
+                <select id="dropdownPilihan"></select>
+
+
+                <p style="margin-top: 18px;">
+                    <b>Check Box</b>
+                </p>
+
+                <div id="checkboxPilihan" class="checkbox-list"></div>
+
+                <button type="button" id="btnPilihanUser">
+                    OK
+                </button>
+
+            </div>
+
+
+            <!-- EMAIL -->
+            <div id="bagianEmail" class="card hidden">
+
+                <h2>4. Masukkan Email</h2>
+
+                <label for="email">Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="contoh@email.com"
+                >
+
+                <p id="errorEmail" class="error"></p>
+
+                <button type="button" id="btnEmail">
+                    OK
+                </button>
+
+            </div>
+
+
+            <!-- OUTPUT -->
+            <div id="bagianHasil" class="card hidden">
+
+                <h2>5. Output</h2>
+
+                <div id="hasil" class="hasil"></div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script>
+
+        // Array untuk menyimpan pilihan
+        let daftarPilihan = [];
+        let namaUser = "";
+        let jumlahPilihan = 0;
+        let emailUser = "";
+        let pilihanRadio = "";
+        let pilihanDropdown = "";
+        let pilihanCheckbox = [];
+
+
+        // Event controller tombol jumlah
+        document
+            .getElementById("btnJumlah")
+            .addEventListener("click", buatInputPilihan);
+
+
+        // Event controller tombol pilihan
+        document
+            .getElementById("btnPilihan")
+            .addEventListener("click", buatPilihan);
+
+
+        // Event controller tombol pilihan user
+        document
+            .getElementById("btnPilihanUser")
+            .addEventListener("click", simpanPilihan);
+
+
+        // Event controller tombol email
+        document
+            .getElementById("btnEmail")
+            .addEventListener("click", validasiEmail);
+
+
+        // Fungsi membuat input pilihan
+        function buatInputPilihan() {
+
+            const nama =
+                document.getElementById("nama").value.trim();
+
+            const jumlah =
+                Number(document.getElementById("jumlah").value);
+
+            const errorJumlah =
+                document.getElementById("errorJumlah");
+
+            errorJumlah.textContent = "";
+
+
+            // Error handling nama
+            if (nama === "") {
+
+                alert("Nama harus diisi!");
+
+                document
+                    .getElementById("nama")
+                    .focus();
+
+                return;
+            }
+
+
+            // Error handling jumlah
+            if (
+                !Number.isInteger(jumlah) ||
+                jumlah < 1 ||
+                jumlah > 10
+            ) {
+
+                errorJumlah.textContent =
+                    "Jumlah pilihan harus berupa bilangan bulat 1 sampai 10.";
+
+                document
+                    .getElementById("jumlah")
+                    .focus();
+
+                return;
+            }
+
+
+            namaUser = nama;
+            jumlahPilihan = jumlah;
+
+
+            const container =
+                document.getElementById("inputPilihan");
+
+            container.innerHTML = "";
+
+
+            // Array pilihan minuman
+            const contohMinuman = [
+                "Kopi",
+                "Teh",
+                "Susu"
+            ];
+
+
+            // Loop membuat input pilihan
+            for (
+                let i = 0;
+                i < jumlahPilihan;
+                i++
+            ) {
+
+                const div =
+                    document.createElement("div");
+
+                div.className =
+                    "pilihan-item";
+
+
+                const label =
+                    document.createElement("label");
+
+                label.textContent =
+                    "Pilihan " + (i + 1);
+
+
+                const input =
+                    document.createElement("input");
+
+                input.type = "text";
+
+                input.className =
+                    "teksPilihan";
+
+                input.placeholder =
+                    "Masukkan teks pilihan";
+
+
+                // Jika jumlah 3,
+                // otomatis Kopi, Teh, Susu
+                if (jumlahPilihan === 3) {
+
+                    input.value =
+                        contohMinuman[i];
+
+                }
+
+
+                div.appendChild(label);
+                div.appendChild(input);
+
+                container.appendChild(div);
+
+            }
+
+
+            document
+                .getElementById("bagianPilihan")
+                .classList.remove("hidden");
+
+
+            document
+                .getElementById("bagianPilihan")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        // Fungsi membuat radio,
+        // dropdown dan checkbox
+        function buatPilihan() {
+
+            const inputPilihan =
+                document.querySelectorAll(
+                    ".teksPilihan"
+                );
+
+
+            const errorPilihan =
+                document.getElementById(
+                    "errorPilihan"
+                );
+
+
+            daftarPilihan = [];
+
+            errorPilihan.textContent = "";
+
+
+            // Memasukkan teks ke array
+            for (
+                let i = 0;
+                i < inputPilihan.length;
+                i++
+            ) {
+
+                const teks =
+                    inputPilihan[i].value.trim();
+
+
+                if (teks === "") {
+
+                    errorPilihan.textContent =
+                        "Semua teks pilihan harus diisi.";
+
+                    inputPilihan[i].focus();
+
+                    return;
+
+                }
+
+
+                daftarPilihan.push(teks);
+
+            }
+
+
+            const radio =
+                document.getElementById(
+                    "radioPilihan"
+                );
+
+
+            const dropdown =
+                document.getElementById(
+                    "dropdownPilihan"
+                );
+
+
+            const checkbox =
+                document.getElementById(
+                    "checkboxPilihan"
+                );
+
+
+            radio.innerHTML = "";
+            dropdown.innerHTML = "";
+            checkbox.innerHTML = "";
+
+
+            // Loop membuat radio button
+            for (
+                let i = 0;
+                i < daftarPilihan.length;
+                i++
+            ) {
+
+                const label =
+                    document.createElement("label");
+
+
+                const input =
+                    document.createElement("input");
+
+
+                input.type = "radio";
+
+                input.name = "minuman";
+
+                input.value =
+                    daftarPilihan[i];
+
+
+                if (i === 0) {
+                    input.checked = true;
+                }
+
+
+                label.appendChild(input);
+
+                label.appendChild(
+                    document.createTextNode(
+                        " " + daftarPilihan[i]
+                    )
+                );
+
+
+                radio.appendChild(label);
+
+            }
+
+
+            // Membuat pilihan awal dropdown
+            const optionAwal =
+                document.createElement("option");
+
+
+            optionAwal.value = "";
+
+            optionAwal.textContent =
+                "-- Pilih minuman --";
+
+
+            dropdown.appendChild(optionAwal);
+
+
+            // Loop membuat dropdown
+            for (
+                let i = 0;
+                i < daftarPilihan.length;
+                i++
+            ) {
+
+                const option =
+                    document.createElement(
+                        "option"
+                    );
+
+
+                option.value =
+                    daftarPilihan[i];
+
+                option.textContent =
+                    daftarPilihan[i];
+
+
+                dropdown.appendChild(option);
+
+            }
+
+
+            // Loop membuat checkbox
+            for (
+                let i = 0;
+                i < daftarPilihan.length;
+                i++
+            ) {
+
+                const label =
+                    document.createElement("label");
+
+
+                const input =
+                    document.createElement("input");
+
+
+                input.type = "checkbox";
+
+                input.className =
+                    "checkMinuman";
+
+                input.value =
+                    daftarPilihan[i];
+
+
+                label.appendChild(input);
+
+                label.appendChild(
+                    document.createTextNode(
+                        " " + daftarPilihan[i]
+                    )
+                );
+
+
+                checkbox.appendChild(label);
+
+            }
+
+
+            document
+                .getElementById(
+                    "bagianPilihanUser"
+                )
+                .classList.remove("hidden");
+
+
+            document
+                .getElementById(
+                    "bagianPilihanUser"
+                )
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        // Fungsi menyimpan pilihan user
+        function simpanPilihan() {
+
+            const radioTerpilih =
+                document.querySelector(
+                    'input[name="minuman"]:checked'
+                );
+
+
+            const dropdown =
+                document.getElementById(
+                    "dropdownPilihan"
+                );
+
+
+            if (radioTerpilih) {
+
+                pilihanRadio =
+                    radioTerpilih.value;
+
+            } else {
+
+                pilihanRadio = "";
+
+            }
+
+
+            pilihanDropdown =
+                dropdown.value;
+
+
+            pilihanCheckbox = [];
+
+
+            const checkboxTerpilih =
+                document.querySelectorAll(
+                    ".checkMinuman:checked"
+                );
+
+
+            // Loop mengambil checkbox yang dipilih
+            for (
+                let i = 0;
+                i < checkboxTerpilih.length;
+                i++
+            ) {
+
+                pilihanCheckbox.push(
+                    checkboxTerpilih[i].value
+                );
+
+            }
+
+
+            if (pilihanRadio === "") {
+
+                alert(
+                    "Silakan pilih minuman pada radio button."
+                );
+
+                return;
+
+            }
+
+
+            document
+                .getElementById("bagianEmail")
+                .classList.remove("hidden");
+
+
+            document
+                .getElementById("bagianEmail")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        // Fungsi validasi email
+        function validasiEmail() {
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+
+            const errorEmail =
+                document.getElementById(
+                    "errorEmail"
+                );
+
+
+            errorEmail.textContent = "";
+
+
+            // Pattern matching email
+            const polaEmail =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+            // Jika email tidak sesuai pola
+            if (!polaEmail.test(email)) {
+
+                alert(
+                    "Email tidak valid. Silakan masukkan email dengan format yang benar!"
+                );
+
+
+                errorEmail.textContent =
+                    "Format email salah. Contoh: nama@email.com";
+
+
+                document
+                    .getElementById("email")
+                    .focus();
+
+
+                return;
+
+            }
+
+
+            emailUser = email;
+
+            tampilkanHasil();
+
+        }
+
+
+        // Fungsi menampilkan output menggunakan DOM
+        function tampilkanHasil() {
+
+            let daftarTeks = "";
+
+
+            // Loop array pilihan
+            for (
+                let i = 0;
+                i < daftarPilihan.length;
+                i++
+            ) {
+
+                if (i > 0) {
+                    daftarTeks += ", ";
+                }
+
+                daftarTeks +=
+                    daftarPilihan[i];
+
+            }
+
+
+            let checkboxTeks =
+                pilihanCheckbox.length > 0
+                ? pilihanCheckbox.join(", ")
+                : "tidak ada";
+
+
+            const hasil =
+                document.getElementById(
+                    "hasil"
+                );
+
+
+            hasil.innerHTML =
+                "Hallo, nama saya <b>" +
+                namaUser +
+                "</b>, email <b>" +
+                emailUser +
+                "</b>. Saya mempunyai sejumlah <b>" +
+                jumlahPilihan +
+                "</b> pilihan yaitu <b>" +
+                daftarTeks +
+                "</b>, dan saya memilih <b>" +
+                pilihanRadio +
+                "</b> melalui radio button. " +
+                "Pilihan dropdown saya adalah <b>" +
+                (pilihanDropdown ||
+                    "belum dipilih") +
+                "</b>, sedangkan checkbox yang dipilih adalah <b>" +
+                checkboxTeks +
+                "</b>.";
+
+
+            document
+                .getElementById("bagianHasil")
+                .classList.remove("hidden");
+
+
+            document
+                .getElementById("bagianHasil")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+
